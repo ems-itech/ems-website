@@ -114,7 +114,7 @@ export default function Contact() {
               </div>
 
               <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Sending..." : "Submit Inquiry"}
+                {isSubmitting ? "Sending..." : "Submit"}
               </Button>
 
               {/* STATUS MESSAGE */}

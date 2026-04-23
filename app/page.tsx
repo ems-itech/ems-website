@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FadeIn } from "@/components/ui/fade-in";
-import { ArrowRight, CheckCircle2, Server, Shield, Cloud, Code } from "lucide-react";
+import { ArrowRight, CheckCircle2, Server, Shield, Cloud, Code, ShieldCheck, Bug, Users } from "lucide-react";
 
 export default function Home() {
   return (
@@ -84,10 +84,10 @@ className="inline-flex h-12 items-center justify-center rounded-md bg-[hsl(var(-
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Server, title: "Infrastructure", desc: "Resilient systems architecture and deployment for mission-critical operations." },
-              { icon: Code, title: "Software Development", desc: "Custom application engineering utilizing modern, scalable frameworks." },
-              { icon: Shield, title: "Cybersecurity", desc: "Comprehensive threat modeling, mitigation, and compliance enforcement." },
-              { icon: Cloud, title: "Cloud Solutions", desc: "Cloud-native architectures, migrations, and cost-optimization strategies." }
+              { icon: ShieldCheck, title: "Production Support", desc: "Our team at EMS provides 24/7 production support, ensuring system stability, proactive monitoring, and rapid incident resolution for mission-critical environments." },
+              { icon: Code, title: "Software Development", desc: "EMS delivers custom software solutions built with modern technologies, ensuring scalable, secure, and high-performance applications tailored to business needs." },
+              { icon: Bug, title: "Software Testing", desc: "EMS offers comprehensive QA services, including functional, automation, performance, and security testing to guarantee reliable and high-quality software delivery." },
+              { icon: Users, title: "IT Recruitment", desc: "EMS connects organizations with top-tier IT talent, helping build strong and scalable teams across various technology domains and industries." }
             ].map((service, i) => (
               <FadeIn key={i} delay={0.1 * i} className="group relative rounded-xl border border-border/50 bg-background p-6 hover:border-primary/50 transition-colors">
                 <service.icon className="h-8 w-8 text-primary mb-4" />
