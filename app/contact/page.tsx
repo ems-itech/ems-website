@@ -5,17 +5,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MapPin, Phone, Mail } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 export default function Contact() {
-  const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<null | "success" | "error">(null);
+
+  // Auto-dismiss success message after 3 seconds
+  useEffect(() => {
+    if (status === "success") {
+      const timer = setTimeout(() => setStatus(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setStatus(null);
 
     const formData = new FormData(e.currentTarget);
 
@@ -26,6 +34,8 @@ export default function Contact() {
     };
 
     try {
+      console.log("📧 Submitting contact form...", data);
+      
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -34,20 +44,25 @@ export default function Contact() {
         body: JSON.stringify(data),
       });
 
-      if (!res.ok) throw new Error("Failed to send");
+      console.log("Response status:", res.status, "OK:", res.ok);
+      
+      const responseData = await res.json();
+      console.log("Response data:", responseData);
 
-      toast({
-        title: "Message sent successfully.",
-        description: "Our team will contact you within 24 hours.",
-      });
+      // ✅ Check both status and response
+      if (!res.ok) {
+        console.error("❌ API returned error:", responseData.error);
+        setStatus("error");
+        return;
+      }
 
-      e.currentTarget.reset();
-    } catch (error) {
-      toast({
-        title: "Something went wrong.",
-        description: "Please try again later.",
-        variant: "destructive",
-      });
+      console.log("✅ Email sent successfully!");
+      setStatus("success");
+      (e.target as HTMLFormElement).reset();
+
+    } catch (error: any) {
+      console.error("❌ Fetch error:", error);
+      setStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -79,25 +94,12 @@ export default function Contact() {
             >
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
-                <Input
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="Jane Doe"
-                  className="bg-background"
-                />
+                <Input id="name" name="name" required placeholder="Your Name" className="bg-background" />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="jane@company.com"
-                  className="bg-background"
-                />
+                <Input id="email" name="email" type="email" required placeholder="Your Email" className="bg-background" />
               </div>
 
               <div className="space-y-2">
@@ -114,6 +116,19 @@ export default function Contact() {
               <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Submit Inquiry"}
               </Button>
+
+              {/* STATUS MESSAGE */}
+              {status === "success" && (
+                <p className="text-green-600 text-sm mt-2">
+                  Message sent successfully ✔
+                </p>
+              )}
+
+              {status === "error" && (
+                <p className="text-red-500 text-sm mt-2">
+                  Something went wrong. Please try again.
+                </p>
+              )}
             </form>
           </FadeIn>
 

@@ -4,25 +4,46 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { name, email, message } = body;
+    console.log("📧 Contact form received");
+    
+    const { name, email, message } = await req.json();
+    console.log("✓ Form data parsed:", { name, email });
 
-    await resend.emails.send({
-      from: "EMS Contact <onboarding@resend.dev>",
-      to: "your-email@example.com",
-      subject: `New Contact Form Message from ${name}`,
+    // Validate required fields
+    if (!name || !email || !message) {
+      console.warn("❌ Missing required fields");
+      return Response.json(
+        { ok: false, error: "Missing required fields" },
+        { status: 400 }
+      );
+    }
+
+    console.log("📤 Sending email via Resend...");
+    
+    const result = await resend.emails.send({
+      from: process.env.APPOINTMENT_FROM_EMAIL!,
+      to: process.env.APPOINTMENT_TO_EMAIL!,
+      subject: `Message from ${name}`,
       replyTo: email,
       html: `
-        <h2>New Message from EMS Website</h2>
+        <h2>New Message</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <p><strong>Message:</strong> ${message}</p>
       `,
     });
 
-    return Response.json({ success: true });
-  } catch (error) {
-    return Response.json({ error: "Failed to send email" }, { status: 500 });
+    console.log("✅ Email sent successfully:", result);
+
+    // ✅ Always return clean success response
+    return Response.json({ ok: true }, { status: 200 });
+
+  } catch (error: any) {
+    console.error("❌ EMAIL ERROR:", error);
+    
+    return Response.json(
+      { ok: false, error: error?.message || "Failed to send email" },
+      { status: 500 }
+    );
   }
 }
