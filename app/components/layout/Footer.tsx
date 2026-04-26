@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import { Facebook, Linkedin } from "lucide-react";
 export function Footer() {
   return (
     <footer className="border-t border-border/40 bg-muted/20">
@@ -32,6 +32,7 @@ export function Footer() {
               <li><Link href="/about">About Us</Link></li>
               <li><Link href="/contact">Contact Us</Link></li>
               <li><Link href="/clients">Clients</Link></li>
+               <li><Link href="/services">Services</Link></li>
 
             </ul>
           </div>
@@ -41,8 +42,29 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>info@ems-itech.com</li>
               <li>+962790077730</li>
-              <li>
-                📍 Amman, Jordan
+              <li>📍 Amman, Jordan</li>
+
+              {/* Social Links */}
+              <li className="pt-2 flex gap-4">
+                <a
+                  href="https://www.facebook.com/share/1B2HWzbhYc/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-foreground transition"
+                >
+                  <Facebook className="h-4 w-4" />
+                  Facebook
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/company/emerging-management-servises/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-foreground transition"
+                >
+                  <Linkedin className="h-4 w-4" />
+                  LinkedIn
+                </a>
               </li>
             </ul>
           </div>

@@ -35,9 +35,9 @@ export default function Home() {
 
             <FadeIn>
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white leading-[1.1]">
-                Precision engineering for{" "}
+                Smarter IT Solutions for{" "}
                 <span className="text-white/70">
-                  enterprise scale.
+                  Modern Enterprises.
                 </span>
               </h1>
             </FadeIn>
@@ -52,7 +52,7 @@ export default function Home() {
 
               <Link
                 href="/contact"
-className="inline-flex h-12 items-center justify-center rounded-md bg-[hsl(var(--primary))] text-primary-foreground px-8 text-sm font-medium shadow hover:opacity-90 transition"              >
+                className="inline-flex h-12 items-center justify-center rounded-md bg-[hsl(var(--primary))] text-primary-foreground px-8 text-sm font-medium shadow hover:opacity-90 transition"              >
                 Discuss your project
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -103,20 +103,23 @@ className="inline-flex h-12 items-center justify-center rounded-md bg-[hsl(var(-
       <section className="py-24">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center">
+
             <FadeIn>
               <h2 className="text-3xl font-bold tracking-tight mb-6">
-                Built on discipline.<br/>Driven by results.
+                Building and supporting enterprise systems across the full lifecycle.
               </h2>
+
               <p className="text-muted-foreground mb-8">
-                We do not compromise on quality. Our methodology is rooted in rigorous engineering practices, transparent communication, and an unwavering commitment to operational excellence.
+                EMS delivers end-to-end technology services that help enterprises build, run, and scale their systems.
+                From development to production support, we focus on stability, performance, and continuous improvement.
               </p>
 
               <ul className="space-y-4">
                 {[
-                  "Zero-downtime deployment strategies",
-                  "SOC2 & ISO27001 compliant workflows",
-                  "Dedicated senior engineering teams",
-                  "24/7 proactive monitoring & support"
+                  "Full-cycle software development & delivery",
+                  "24/7 production support & incident management",
+                  "Quality assurance & automated testing",
+                  "IT recruitment for technical and enterprise roles"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start">
                     <CheckCircle2 className="h-5 w-5 text-primary mr-3 shrink-0" />
@@ -127,23 +130,29 @@ className="inline-flex h-12 items-center justify-center rounded-md bg-[hsl(var(-
             </FadeIn>
 
             <FadeIn delay={0.2} className="grid grid-cols-2 gap-4">
-              <div className="bg-muted/30 p-8 rounded-xl border text-center">
-                <div className="text-4xl font-bold">99.99%</div>
-                <div className="text-sm text-muted-foreground">Uptime SLA</div>
-              </div>
-              <div className="bg-muted/30 p-8 rounded-xl border text-center">
-                <div className="text-4xl font-bold">15+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
-              </div>
-              <div className="bg-muted/30 p-8 rounded-xl border text-center">
-                <div className="text-4xl font-bold">250+</div>
-                <div className="text-sm text-muted-foreground">Enterprise Projects</div>
-              </div>
+
               <div className="bg-muted/30 p-8 rounded-xl border text-center">
                 <div className="text-4xl font-bold">24/7</div>
-                <div className="text-sm text-muted-foreground">Support</div>
+                <div className="text-sm text-muted-foreground">Production Support</div>
               </div>
+
+              <div className="bg-muted/30 p-8 rounded-xl border text-center">
+                <div className="text-4xl font-bold">Rapid</div>
+                <div className="text-sm text-muted-foreground">Incident Response</div>
+              </div>
+
+              <div className="bg-muted/30 p-8 rounded-xl border text-center">
+                <div className="text-4xl font-bold">QA</div>
+                <div className="text-sm text-muted-foreground">Quality Assurance & Testing Services</div>
+              </div>
+
+              <div className="bg-muted/30 p-8 rounded-xl border text-center">
+                <div className="text-4xl font-bold">IT</div>
+                <div className="text-sm text-muted-foreground">Talent Delivery</div>
+              </div>
+
             </FadeIn>
+
           </div>
         </div>
       </section>
