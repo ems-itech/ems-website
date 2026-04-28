@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
@@ -21,9 +22,13 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold tracking-tight ">
-            EMS
-          </span>
+          <Image
+            src="/ems-main-logo.png"   
+            alt="EMS Logo"
+            width={100}
+            height={100}
+            className="object-contain"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
@@ -31,9 +36,8 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`transition-colors hover:text-foreground/80 ${
-                pathname === link.href ? "text-foreground" : "text-foreground/60"
-              }`}
+              className={`transition-colors hover:text-foreground/80 ${pathname === link.href ? "text-foreground" : "text-foreground/60"
+                }`}
             >
               {link.label}
             </Link>
@@ -60,9 +64,8 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`text-lg font-medium transition-colors hover:text-foreground/80 ${
-                    pathname === link.href ? "text-foreground" : "text-foreground/60"
-                  }`}
+                  className={`text-lg font-medium transition-colors hover:text-foreground/80 ${pathname === link.href ? "text-foreground" : "text-foreground/60"
+                    }`}
                 >
                   {link.label}
                 </Link>

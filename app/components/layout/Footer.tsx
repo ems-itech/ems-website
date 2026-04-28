@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+
 import { Facebook, Linkedin } from "lucide-react";
 export function Footer() {
   return (
@@ -7,9 +9,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <Link href="/" className="inline-block mb-4">
-              <span className="text-xl font-bold tracking-tight">
-                EMS
-              </span>
+              <Image
+                src="/ems-main-logo.png"
+                alt="EMS Logo"
+                width={80}
+                height={80}
+                className="object-contain"
+              />
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs">
               EMS is a trusted IT partner providing software engineering production support and enterprise technology solutions. We focus on reliability, quality, and long-term client success.
@@ -32,7 +38,7 @@ export function Footer() {
               <li><Link href="/about">About Us</Link></li>
               <li><Link href="/contact">Contact Us</Link></li>
               <li><Link href="/clients">Clients</Link></li>
-               <li><Link href="/services">Services</Link></li>
+              <li><Link href="/services">Services</Link></li>
 
             </ul>
           </div>

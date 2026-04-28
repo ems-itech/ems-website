@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EMS - Enterprise IT Solutions",
+  title: "Emerging Management Services",
   description: "EMS provides precision IT solutions, software development, and managed services for enterprise organizations.",
 };
 
