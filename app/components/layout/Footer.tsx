@@ -56,7 +56,7 @@ export function Footer() {
                   href="https://www.facebook.com/share/1B2HWzbhYc/?mibextid=wwXIfr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-foreground transition"
+                  className="flex items-center gap-2 hover:text-[#88c700] transition"
                 >
                   <Facebook className="h-4 w-4" />
                   Facebook
@@ -66,7 +66,7 @@ export function Footer() {
                   href="https://www.linkedin.com/company/emerging-management-servises/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-foreground transition"
+                  className="flex items-center gap-2 hover:text-[#88c700] transition"
                 >
                   <Linkedin className="h-4 w-4" />
                   LinkedIn
