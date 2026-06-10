@@ -5,8 +5,8 @@ import { FadeIn } from "@/components/ui/fade-in";
 
 export default function Clients() {
     const clients = [
-        { name: "Thamanya", logo: "/thamanya.png" },
         { name: "HALA", logo: "/hala.png" },
+        { name: "Thamanya", logo: "/thamanya.png" },
         { name: "Wareef", logo: "/wareef.jpeg" },
         { name: "Saudi Tourism Authority", logo: "/sta.png" },
         { name: "Orange", logo: "/orange.png" },
@@ -16,6 +16,7 @@ export default function Clients() {
         { name: "Esense", logo: "/esense.png" },
         { name: "Saudi Central Bank", logo: "/bank.png" },
         { name: "Rekaz", logo: "/rakaz.png" },
+        { name: "Wadaie", logo: "/wadaie.png" },
 
     ];
 
