@@ -1,87 +1,104 @@
-import Link from "next/link";
-import Image from "next/image";
+"use client";
 
-import { Facebook, Linkedin } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import styles from "./Footer.module.css";
+
+const offerings = [
+  { label: "Managed IT Solutions", href: "/services" },
+  { label: "Cloud Solutions", href: "/services" },
+  { label: "Cybersecurity Services", href: "/services", isNew: true },
+  { label: "Data Analytics & AI Solutions", href: "/services" },
+  { label: "Enterprise Resource Planning (ERP)", href: "/services" },
+];
+
+const locations = [
+  { city: "Amman, Jordan", detail: "Amman, Jordan" },
+  { city: "Riyadh, Saudi Arabia", detail: "Riyadh, Saudi Arabia" },
+  { city: "Cairo, Egypt", detail: "Cairo, Egypt" },
+];
+
 export function Footer() {
+  const isContact = usePathname() === "/contact";
+
   return (
-    <footer className="border-t border-border/40 bg-muted/20">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-1">
-            <Link href="/" className="inline-block mb-4">
+    <footer className={styles.footer}>
+      <div className={styles.inner}>
+        <div className={styles.columns}>
+          <div>
+            <Link href="/" className={styles.brandLogo} aria-label="EMS home">
               <Image
                 src="/ems-main-logo.png"
-                alt="EMS Logo"
-                width={80}
-                height={80}
-                className="object-contain"
+                alt="EMS — Emerging Management Services"
+                width={72}
+                height={32}
               />
             </Link>
-            <p className="text-sm text-muted-foreground max-w-xs">
-              EMS is a trusted IT partner providing software engineering production support and enterprise technology solutions. We focus on reliability, quality, and long-term client success.
+            <p className={styles.description}>
+              Empowering enterprise excellence through precise IT solutions and strategic
+              tech integration across the MENA region.
             </p>
           </div>
 
-          <div>
-            <h3 className="font-semibold mb-4 text-sm">Services</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="/services">IT Consulting</Link></li>
-              <li><Link href="/services">Software Development</Link></li>
-              <li><Link href="/services">Production Support</Link></li>
-              <li><Link href="/services">Software Testing</Link></li>
+          <div className={styles.offerings}>
+            <h2 className={styles.heading}>Our Offerings</h2>
+            <ul className={styles.linkList}>
+              {offerings.map((offering) => (
+                <li key={offering.label}>
+                  <Link href={offering.href} className={styles.link}>
+                    {offering.label}
+                  </Link>
+                  {offering.isNew ? <span className={styles.newBadge}>New Services</span> : null}
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4 text-sm">Company</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/contact">Contact Us</Link></li>
-              <li><Link href="/clients">Clients</Link></li>
-              <li><Link href="/services">Services</Link></li>
-
+            <h2 className={styles.heading}>Regional Presence</h2>
+            <ul className={styles.presenceList}>
+              {locations.map((location) => (
+                <li className={styles.presenceItem} key={location.city}>
+                  <span className={styles.primaryText}>{location.city}</span>
+                  <span className={styles.secondaryText}>{location.detail}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4 text-sm">Contact</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>info@ems-itech.com</li>
-              <li>+962790077730</li>
-              <li>📍 Amman, Jordan</li>
-
-              {/* Social Links */}
-              <li className="pt-2 flex gap-4">
-                <a
-                  href="https://www.facebook.com/share/1B2HWzbhYc/?mibextid=wwXIfr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-[#88c700] transition"
-                >
-                  <Facebook className="h-4 w-4" />
-                  Facebook
+            <h2 className={styles.heading}>Get in Touch</h2>
+            <ul className={styles.contactList}>
+              <li className={styles.contactItem}>
+                <span className={styles.primaryText}>Contact Number</span>
+                <a className={styles.secondaryText} href="tel:+962790077730">
+                  +962790077730
                 </a>
-
-                <a
-                  href="https://www.linkedin.com/company/emerging-management-servises/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-[#88c700] transition"
-                >
-                  <Linkedin className="h-4 w-4" />
-                  LinkedIn
+              </li>
+              <li className={styles.contactItem}>
+                <span className={styles.primaryText}>Email Address</span>
+                <a className={styles.secondaryText} href="mailto:info@ems-itech.com">
+                  info@ems-itech.com
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border/40 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Emerging Management Services. All rights reserved.</p>
-          <div className="flex gap-4">
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
-          </div>
+        <hr className={`${styles.divider} ${isContact ? styles.contactDivider : ""}`} />
+        <div className={`${styles.bottom} ${isContact ? styles.contactBottom : ""}`}>
+          <p className={styles.copyright}>
+            © 2026 Ems-itech. All rights reserved.
+          </p>
+          {isContact ? (
+            <nav className={styles.legalLinks} aria-label="Legal">
+              <Link href="/terms">Terms of Service</Link>
+              <Link href="/privacy">Privacy Policy</Link>
+              <Link href="/cookies">Cookie Policy</Link>
+            </nav>
+          ) : null}
         </div>
       </div>
     </footer>

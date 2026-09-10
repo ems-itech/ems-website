@@ -1,170 +1,143 @@
 "use client";
 
-import { FadeIn } from "@/components/ui/fade-in";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { useState, useEffect } from "react";
-import { MapPin, Phone, Mail } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+import styles from "./page.module.css";
+
+type SubmitStatus = "success" | "error" | null;
+
+const contactDetails = [
+  {
+    icon: "/figma-contact/email.svg",
+    label: "Email address",
+    content: <a href="mailto:hello@ems-itech.com">info@ems-itech.com</a>,
+  },
+  {
+    icon: "/figma-contact/phone.svg",
+    label: "Phone number",
+    content: <a href="tel:+962790077730">+962 79 007 7730</a>,
+  },
+  {
+    icon: "/figma-contact/office.svg",
+    label: "OFFICE",
+    content: <span>Emerging Management Services<br />Amman, Jordan</span>,
+  },
+];
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<null | "success" | "error">(null);
+  const [status, setStatus] = useState<SubmitStatus>(null);
 
-  // Auto-dismiss success message after 3 seconds
   useEffect(() => {
-    if (status === "success") {
-      const timer = setTimeout(() => setStatus(null), 3000);
-      return () => clearTimeout(timer);
-    }
+    if (status !== "success") return;
+    const timer = window.setTimeout(() => setStatus(null), 3000);
+    return () => window.clearTimeout(timer);
   }, [status]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     setIsSubmitting(true);
     setStatus(null);
 
-    const formData = new FormData(e.currentTarget);
-
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const data = {
       name: formData.get("name"),
       email: formData.get("email"),
+      company: formData.get("company"),
+      phone: formData.get("phone"),
+      service: formData.get("service"),
       message: formData.get("message"),
     };
 
     try {
-      console.log("📧 Submitting contact form...", data);
-      
-      const res = await fetch("/api/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
-      console.log("Response status:", res.status, "OK:", res.ok);
-      
-      const responseData = await res.json();
-      console.log("Response data:", responseData);
-
-      // ✅ Check both status and response
-      if (!res.ok) {
-        console.error("❌ API returned error:", responseData.error);
+      if (!response.ok) {
         setStatus("error");
         return;
       }
 
-      console.log("✅ Email sent successfully!");
+      form.reset();
       setStatus("success");
-      (e.target as HTMLFormElement).reset();
-
-    } catch (error: any) {
-      console.error("❌ Fetch error:", error);
+    } catch {
       setStatus("error");
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }
 
   return (
-    <div className="pt-24 pb-32">
-      <div className="container mx-auto px-4">
+    <div className={styles.page}>
+      <div className={styles.container}>
+        <header className={styles.intro}>
+          <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+            <Link href="/">Home</Link><span>/</span><span aria-current="page">Contact</span>
+          </nav>
+          <h1>Talk to an expert</h1>
+          <p>Tell us what you are trying to keep running, ship or hire for. The first call is with the practice lead who would own the work — not a sales team.</p>
+        </header>
 
-        {/* Header */}
-        <FadeIn>
-          <div className="max-w-2xl mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              Contact Us
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              Reach out to EMS for tailored IT solutions and support.
-            </p>
-          </div>
-        </FadeIn>
-
-        <div className="grid md:grid-cols-2 gap-16">
-
-          {/* FORM */}
-          <FadeIn delay={0.1}>
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-6 bg-card border border-border/50 p-8 rounded-xl shadow-sm"
-            >
-              <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" name="name" required placeholder="Your Name" className="bg-background" />
+        <div className={styles.contentGrid}>
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.fields}>
+              <div className={styles.fieldRow}>
+                <label className={styles.field}>Full name<input name="name" required placeholder="Your name" autoComplete="name" /></label>
+                <label className={styles.field}>Work email<input name="email" type="email" required placeholder="you@company.com" autoComplete="email" /></label>
               </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" required placeholder="Your Email" className="bg-background" />
+              <div className={styles.fieldRow}>
+                <label className={styles.field}>Company<input name="company" placeholder="Company name" autoComplete="organization" /></label>
+                <label className={styles.field}>Phone (optional)<input name="phone" type="tel" placeholder="+962 ..." autoComplete="tel" /></label>
               </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  required
-                  placeholder="Describe your requirements..."
-                  className="min-h-[150px] bg-background"
-                />
-              </div>
-
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Sending..." : "Submit"}
-              </Button>
-
-              {/* STATUS MESSAGE */}
-              {status === "success" && (
-                <p className="text-green-600 text-sm mt-2">
-                  Message sent successfully ✔
-                </p>
-              )}
-
-              {status === "error" && (
-                <p className="text-red-500 text-sm mt-2">
-                  Something went wrong. Please try again.
-                </p>
-              )}
-            </form>
-          </FadeIn>
-
-          {/* CONTACT INFO */}
-          <FadeIn delay={0.2} className="space-y-12">
-            <div>
-              <h3 className="text-lg font-bold mb-6">Global Headquarters</h3>
-
-              <div className="space-y-4 text-muted-foreground">
-                <div className="flex items-start">
-                  <MapPin className="h-5 w-5 mr-4 text-primary mt-0.5" />
-                  <span>Amman, Jordan</span>
-                </div>
-
-                <div className="flex items-center">
-                  <Phone className="h-5 w-5 mr-4 text-primary" />
-                  <span>+962790077730</span>
-                </div>
-
-                <div className="flex items-center">
-                  <Mail className="h-5 w-5 mr-4 text-primary" />
-                  <span>info@ems-itech.com</span>
-                </div>
-              </div>
+              <label className={styles.field}>Needed Service
+                <select name="service" defaultValue="Production Support">
+                  <option>Production Support</option>
+                  <option>IT Consulting</option>
+                  <option>Software Development</option>
+                  <option>Software Testing</option>
+                  <option>Cybersecurity</option>
+                  <option>IT Recruitment</option>
+                </select>
+              </label>
+              <label className={styles.field}>What do you need?
+                <textarea name="message" required placeholder="A short description of the systems, scope or roles involved.." />
+              </label>
             </div>
 
-            {/* MAP */}
-            <div className="aspect-video w-full rounded-xl border border-border/50 overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps?q=31.9785278,35.9026111&z=16&output=embed"
-                className="w-full h-full"
-                loading="lazy"
-              />
+            <div className={styles.formFooter}>
+              <div className={styles.status} aria-live="polite">
+                {status === "success" && <p className={styles.success}>Message sent successfully.</p>}
+                {status === "error" && <p className={styles.error}>Something went wrong. Please try again.</p>}
+              </div>
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send enquiry"}
+                <Image src="/figma-contact/arrow-right.svg" alt="" width={20} height={20} aria-hidden />
+              </button>
             </div>
-          </FadeIn>
+          </form>
 
+          <aside className={styles.sidebar}>
+            <div className={styles.incidentCard}>
+              <p className={styles.incidentLabel}>PRODUCTION INCIDENT?</p>
+              <a className={styles.incidentPhone} href="tel:+962790077730">+962 79 007 7730</a>
+              <p>The 24/7 escalation line for clients under a Production Support SLA.</p>
+            </div>
+
+            <div className={styles.detailsCard}>
+              {contactDetails.map((detail) => (
+                <div className={styles.detail} key={detail.label}>
+                  <span className={styles.iconBox}><Image src={detail.icon} alt="" width={20} height={20} aria-hidden /></span>
+                  <span className={styles.detailText}><small>{detail.label}</small><strong>{detail.content}</strong></span>
+                </div>
+              ))}
+            </div>
+          </aside>
         </div>
       </div>
     </div>
