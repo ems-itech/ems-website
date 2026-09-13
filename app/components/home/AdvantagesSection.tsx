@@ -11,7 +11,7 @@ const advantages = [
 
 export function AdvantagesSection() {
   return (
-    <section className={styles.advantages}>
+    <section id="why-ems" className={styles.advantages}>
       <div className={styles.sectionHeading}>
         <p className={styles.eyebrow}>WHY CHOOSE EMS</p>
         <h2>The EMS Advantage</h2>

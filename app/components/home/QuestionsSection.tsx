@@ -13,7 +13,7 @@ const faqs = [
 
 export function QuestionsSection() {
   return (
-    <section className={styles.questions}>
+    <section id="faq" className={styles.questions}>
       <div className={styles.sectionHeading}>
         <h2>Common Questions</h2>
         <p>Everything you need to attract, engage, and retain more users.</p>

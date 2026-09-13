@@ -11,14 +11,9 @@
 
 .columns {
   display: grid;
-  min-height: 216px;
-  grid-template-columns: 304px repeat(3, minmax(0, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 64px;
   align-items: start;
-}
-
-.offerings {
-  margin-left: 16px;
 }
 
 .brandLogo {
@@ -46,11 +41,6 @@
   text-transform: uppercase;
 }
 
-.offerings .heading {
-  text-transform: none;
-}
-
-.linkList,
 .presenceList,
 .contactList {
   display: grid;
@@ -60,34 +50,11 @@
   list-style: none;
 }
 
-.link,
 .primaryText {
   color: #628922;
   font-size: 1rem;
   font-weight: 650;
   line-height: 1.45;
-}
-
-.link {
-  transition: color 160ms ease;
-}
-
-.link:hover {
-  color: #91c832;
-}
-
-.newBadge {
-  display: inline-flex;
-  margin-left: 9px;
-  transform: translateY(-1px);
-  border-radius: 999px;
-  padding: 4px 10px;
-  color: #4f7b37;
-  background: #f0f8ed;
-  font-size: 0.72rem;
-  font-weight: 500;
-  line-height: 1;
-  white-space: nowrap;
 }
 
 .presenceList,
@@ -164,9 +131,6 @@
     gap: 56px 72px;
   }
 
-  .offerings {
-    margin-left: 0;
-  }
 }
 
 @media (max-width: 600px) {
@@ -209,11 +173,5 @@
   .legalLinks {
     flex-wrap: wrap;
     font-size: 14px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .link {
-    transition: none;
   }
 }

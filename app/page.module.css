@@ -81,11 +81,11 @@
 .secondaryButton:hover,
 .ctaButton:hover { transform: translateY(-2px); }
 
-.assurances { position: absolute; z-index: 2; inset: 0 auto auto 0; width: 1280px; height: 700px; }
-.assurance { position: absolute; display: flex; height: 48px; align-items: center; gap: 8px; border: 1px solid #f5f5f5; border-radius: 8px; padding: 12px 20px; color: var(--brand-700); background: #fff; font-size: 16px; font-weight: 600; line-height: 24px; white-space: nowrap; animation: assurance-float 3.8s ease-in-out infinite; will-change: transform; }
+.assurances { position: absolute; z-index: 2; inset: 0 auto auto 0; width: 1280px; height: 700px; pointer-events: none; }
+.assurance { position: absolute; display: flex; height: 48px; align-items: center; gap: 8px; border: 1px solid #f5f5f5; border-radius: 8px; padding: 12px 20px; color: var(--brand-700); background: #fff; font-size: 16px; font-weight: 600; line-height: 24px; white-space: nowrap; animation: assurance-float 2.4s ease-in-out infinite; will-change: transform; }
 .monitoring { top: 222px; left: 839px; animation-delay: -.4s; }
-.uptime { top: 346px; left: 1028px; animation-delay: -1.7s; animation-duration: 4.2s; }
-.security { top: 528px; left: 858px; animation-delay: -2.8s; animation-duration: 4.5s; }
+.uptime { top: 346px; left: 988px; width: 300px; animation-delay: -1.1s; animation-duration: 2.6s; }
+.security { top: 528px; left: 858px; animation-delay: -1.8s; animation-duration: 2.8s; }
 
 @keyframes assurance-float {
   0%,
@@ -129,6 +129,9 @@
 @keyframes clients-marquee { to { transform: translateX(calc(-50% - 10px)); } }
 
 .competencies { min-height: 1176px; padding: 96px 40px; background: #fff; }
+.competencies,
+.advantages,
+.questions { scroll-margin-top: 120px; }
 .competenciesPanel { position: relative; display: flex; width: min(100%, 1280px); min-height: 984px; flex-direction: column; gap: 60px; margin-inline: auto; overflow: hidden; border-radius: 24px; padding: 60px 40px 36px; background: url("/figma-home/competencies-bg.png") center / cover no-repeat; }
 .competenciesPanel::before { position: absolute; z-index: 0; inset: 0; content: ""; background: var(--brand-600); mix-blend-mode: plus-lighter; }
 .competenciesPanel > * { position: relative; z-index: 1; }
@@ -141,10 +144,10 @@
 .sectionHeadingLight,
 .sectionHeadingLight .eyebrow,
 .sectionHeadingLight > p:not(.eyebrow) { color: #fff; }
-.competencyGrid { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 48px; }
-.competencyCard { min-height: 202px; border-radius: 16px; padding: 24px; background: #fff; }
-.competencyCard h3 { margin: 0; font-size: 30px; font-weight: 500; line-height: 48px; }
-.competencyCard p { margin: 16px 0 0; color: #525252; font-size: 18px; line-height: 28px; }
+.competencyGrid { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; }
+.competencyCard { min-height: 180px; border-radius: 14px; padding: 20px; background: #fff; }
+.competencyCard h3 { margin: 0; font-size: 24px; font-weight: 500; line-height: 32px; }
+.competencyCard p { margin: 12px 0 0; color: #525252; font-size: 16px; line-height: 24px; }
 
 .advantages { min-height: 542px; padding: 96px 40px; }
 .advantageGrid { display: grid; width: min(100%, 1280px); min-height: 222px; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin: 48px auto 0; }
@@ -183,7 +186,8 @@
 .ctaInner > div { width: min(100%, 768px); }
 .cta h2 { margin: 0; color: var(--brand-950); font-size: 30px; font-weight: 600; line-height: 38px; }
 .cta p { margin: 16px 0 0; color: var(--brand-900); font-size: 20px; line-height: 30px; }
-.ctaButton { flex: 0 0 auto; border-color: var(--brand-50); color: var(--brand-700); background: var(--brand-50); }
+.ctaButton { width: fit-content; min-height: 44px; flex: 0 0 auto; border-color: #fff; padding-inline: 16px 12px; color: var(--brand-700); background: #fff; font-size: 15px; text-align: center; white-space: nowrap; }
+.ctaButton img { filter: brightness(0) saturate(100%) invert(45%) sepia(61%) saturate(1105%) hue-rotate(40deg) brightness(91%) contrast(95%); }
 
 @media (max-width: 1100px) {
   .heroInner { padding-top: 190px; }
@@ -191,8 +195,9 @@
   .copy > p { width: 100%; }
   .copy h1 { font-size: 48px; line-height: 58px; }
   .assurances { transform: scale(.78); transform-origin: top left; }
+  .competencyGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .competencyCard { min-height: auto; }
-  .competencyCard h3 { font-size: 25px; line-height: 34px; }
+  .competencyCard h3 { font-size: 22px; line-height: 30px; }
   .competencyCard p { font-size: 16px; line-height: 24px; }
   .advantageGrid { grid-template-columns: repeat(2, 1fr); }
   .advantages,

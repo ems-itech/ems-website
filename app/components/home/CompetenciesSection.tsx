@@ -7,11 +7,14 @@ const competencies = [
   ["Software Testing", "EMS offers comprehensive QA services, including functional, automation, performance, and security testing to guarantee reliable and high-quality software delivery."],
   ["Cybersecurity", "At EMS, we protect enterprise systems through advanced cybersecurity solutions, including threat detection, compliance support, and continuous security monitoring."],
   ["IT Recruitment", "EMS connects organizations with top-tier IT talent, helping build strong and scalable teams across various technology domains and industries."],
+  ["Data Engineering", "Our data engineering services at EMS enable organizations to build efficient data pipelines, optimize storage, and unlock valuable business insights."],
+  ["System Integration", "EMS ensures seamless integration of enterprise systems, enabling unified workflows, improved efficiency, and better operational visibility."],
+  ["Digital Workspace", "We help organizations modernize their digital work environments with secure, flexible, and collaborative solutions that enhance productivity."],
 ] as const;
 
 export function CompetenciesSection() {
   return (
-    <section className={styles.competencies}>
+    <section id="services" className={styles.competencies}>
       <div className={styles.competenciesPanel}>
         <div className={`${styles.sectionHeading} ${styles.sectionHeadingLight}`}>
           <p className={styles.eyebrow}>TECHNICAL MASTERY</p>

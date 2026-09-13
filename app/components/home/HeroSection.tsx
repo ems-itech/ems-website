@@ -18,7 +18,7 @@ export function HeroSection() {
           <h1>Innovative IT Solutions for Today&apos;s <span>Businesses</span>.</h1>
           <p>EMS is your reliable IT partner, ensuring your organization runs smoothly. We design and maintain the infrastructure essential for modern enterprises.</p>
           <div className={styles.actions}>
-            <Link href="/services" className={styles.secondaryButton}>Discover Our Services</Link>
+            <Link href="#services" className={styles.secondaryButton}>Discover Our Services</Link>
             <Link href="/contact" className={styles.primaryButton}>
               Consult with an Expert
               <Image src="/figma-home/arrow-right.svg" alt="" width={20} height={20} aria-hidden />
