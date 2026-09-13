@@ -82,10 +82,16 @@
 .ctaButton:hover { transform: translateY(-2px); }
 
 .assurances { position: absolute; z-index: 2; inset: 0 auto auto 0; width: 1280px; height: 700px; }
-.assurance { position: absolute; display: flex; height: 48px; align-items: center; gap: 8px; border: 1px solid #f5f5f5; border-radius: 8px; padding: 12px 20px; color: var(--brand-700); background: #fff; font-size: 16px; font-weight: 600; line-height: 24px; white-space: nowrap; }
-.monitoring { top: 222px; left: 839px; }
-.uptime { top: 346px; left: 1028px; }
-.security { top: 528px; left: 858px; }
+.assurance { position: absolute; display: flex; height: 48px; align-items: center; gap: 8px; border: 1px solid #f5f5f5; border-radius: 8px; padding: 12px 20px; color: var(--brand-700); background: #fff; font-size: 16px; font-weight: 600; line-height: 24px; white-space: nowrap; animation: assurance-float 3.8s ease-in-out infinite; will-change: transform; }
+.monitoring { top: 222px; left: 839px; animation-delay: -.4s; }
+.uptime { top: 346px; left: 1028px; animation-delay: -1.7s; animation-duration: 4.2s; }
+.security { top: 528px; left: 858px; animation-delay: -2.8s; animation-duration: 4.5s; }
+
+@keyframes assurance-float {
+  0%,
+  100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
 
 .clients { position: absolute; z-index: 3; top: 674px; right: 0; left: 0; height: 300px; padding: 48px 40px; }
 .clientsCard { position: relative; width: min(100%, 1280px); height: 204px; margin-inline: auto; overflow: hidden; border: 1px solid #cbd5e1; border-radius: 24px; padding: 24px 0; background: #fff; }
@@ -245,6 +251,7 @@
   .secondaryButton,
   .ctaButton,
   .faqItem summary img { transition: none; }
+  .assurance { animation: none; }
   .carouselViewport { overflow-x: auto; }
   .carouselGroup[aria-hidden="true"] { display: none; }
   .carouselTrack { transform: none; animation: none; }
