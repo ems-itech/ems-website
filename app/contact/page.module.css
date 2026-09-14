@@ -64,6 +64,9 @@
   background: #fff;
 }
 
+.formMotion { min-width: 0; }
+.sidebarMotion { display: flex; min-height: 590px; flex-direction: column; gap: 24px; }
+
 .fields {
   display: flex;
   flex-direction: column;
