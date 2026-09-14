@@ -8,8 +8,8 @@ import styles from "./Footer.module.css";
 import { SectionSlide } from "@/components/ui/motion-primitives";
 
 const locations = [
-  { city: "Jordan", detail: "Amman" },
-  { city: "Saudi Arabia", detail: "Riyadh" },
+  { city: "Jordan", detail: "Amman,Jordan" },
+  { city: "Saudi Arabia", detail: "Riyadh,Saudi Arabia" },
 ];
 
 export function Footer() {

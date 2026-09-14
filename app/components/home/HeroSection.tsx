@@ -17,11 +17,11 @@ export function HeroSection() {
       <div className={styles.heroInner}>
         <HeroEntrance className={styles.copy} from="left">
           <h1>Innovative IT Solutions for Today&apos;s <span>Businesses</span>.</h1>
-          <p>EMS is your reliable IT partner, ensuring your organization runs smoothly. We design and maintain the infrastructure essential for modern enterprises.</p>
+          <p>From hiring the right talent to testing, supporting, and building your systems, EMS partners with enterprises across Jordan and the Gulf for the full technology lifecycle.</p>
           <div className={styles.actions}>
             <Link href="#services" className={styles.secondaryButton}>Discover Our Services</Link>
             <Link href="/contact" className={styles.primaryButton}>
-              Consult with an Expert
+              Consult a specialist
               <Image src="/figma-home/arrow-right.svg" alt="" width={20} height={20} aria-hidden />
             </Link>
           </div>
