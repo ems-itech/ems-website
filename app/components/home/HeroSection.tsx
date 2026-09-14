@@ -17,7 +17,7 @@ export function HeroSection() {
       <div className={styles.heroInner}>
         <HeroEntrance className={styles.copy} from="left">
           <h1>Innovative IT Solutions for Today&apos;s <span>Businesses</span>.</h1>
-          <p>From hiring the right talent to testing, supporting, and building your systems, EMS partners with enterprises across Jordan and the Gulf for the full technology lifecycle.</p>
+          <p>From strategic consulting to development, testing, security, and 24/7 support — EMS partners with enterprises across Jordan, Saudi Arabia, and Egypt for the full technology lifecycle.</p>
           <div className={styles.actions}>
             <Link href="#services" className={styles.secondaryButton}>Discover Our Services</Link>
             <Link href="/contact" className={styles.primaryButton}>

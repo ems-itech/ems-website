@@ -5,9 +5,17 @@ import styles from "./Footer.module.css";
 import { SectionSlide } from "@/components/ui/motion-primitives";
 
 const locations = [
-  { city: "Jordan", detail: "Amman,Jordan" },
-  { city: "Saudi Arabia", detail: "Riyadh,Saudi Arabia" },
+  { city: "Amman", detail: "Jordan" },
+  { city: "Riyadh", detail: "Saudi Arabia" },
+  { city: "Cairo", detail: "Egypt" },
 ];
+
+const companyLinks = [
+  { href: "/about", label: "About EMS" },
+  { href: "/services", label: "Services" },
+  { href: "/clients", label: "Clients" },
+  { href: "/contact", label: "Contact" },
+] as const;
 
 export function Footer() {
   return (
@@ -27,6 +35,19 @@ export function Footer() {
               Empowering enterprise excellence through precise IT solutions and strategic
               tech integration across the MENA region.
             </p>
+          </div>
+
+          <div>
+            <h2 className={styles.heading}>Company</h2>
+            <ul className={styles.companyList}>
+              {companyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link className={styles.secondaryText} href={link.href}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>
@@ -63,7 +84,7 @@ export function Footer() {
         <hr className={styles.divider} />
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            © 2026 Ems-itech. All rights reserved.
+            © 2026 EMS. All rights reserved.
           </p>
         </div>
       </SectionSlide>

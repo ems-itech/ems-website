@@ -13,7 +13,7 @@ const contactDetails = [
   {
     icon: "/figma-contact/email.svg",
     label: "Email address",
-    content: <a href="mailto:hello@ems-itech.com">info@ems-itech.com</a>,
+    content: <a href="mailto:info@ems-itech.com">info@ems-itech.com</a>,
   },
   {
     icon: "/figma-contact/phone.svg",

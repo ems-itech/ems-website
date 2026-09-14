@@ -6,7 +6,7 @@ import { HeadingReveal, StaggerGroup, StaggerPop } from "@/components/ui/motion-
 const advantages = [
   ["/figma-home/shield-tick.svg", "Enterprise-Level Security", "Unyielding security standards integrated into every solution."],
   ["/figma-home/face-wink.svg", "Exceptional Talent", "Access to the top 1% of specialized tech talent across the region."],
-  ["/figma-home/container.svg", "Effortless Integration", "Custom enterprise applications fit seamlessly into your existing systems."],
+  ["/figma-home/container.svg", "Effortless Integration", "Custom enterprise applications crafted with scalable designs and modern technology stacks that fit seamlessly into your existing systems."],
   ["/figma-home/headphones.svg", "24/7 Dedicated Support", "Constant monitoring and rapid response teams, day or night."],
 ] as const;
 

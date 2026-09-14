@@ -17,7 +17,7 @@ export function Navbar() {
   const hasOverlayHeader = isHome || pathname === "/contact";
 
   const links = [
-    { href: "/#services", label: "Services" },
+    { href: "/services", label: "Services" },
     { href: "/#why-ems", label: "Why Us" },
     { href: "/#faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
