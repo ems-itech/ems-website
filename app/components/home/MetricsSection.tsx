@@ -1,4 +1,5 @@
 import styles from "@/page.module.css";
+import { HeadingReveal, StaggerGroup, StaggerPop } from "@/components/ui/motion-primitives";
 
 const metrics = [
   ["99.9%", "Commitment to Uptime"],
@@ -9,18 +10,18 @@ const metrics = [
 export function MetricsSection() {
   return (
     <section className={styles.metrics}>
-      <div className={styles.sectionHeading}>
+      <HeadingReveal className={styles.sectionHeading}>
         <h2>Unlock the full potential of your data</h2>
         <p>Everything you need to attract, engage, and retain more users.</p>
-      </div>
-      <div className={styles.metricGrid}>
+      </HeadingReveal>
+      <StaggerGroup className={styles.metricGrid} stagger={0.22}>
         {metrics.map(([value, label]) => (
-          <div className={styles.metric} key={value}>
+          <StaggerPop className={styles.metric} key={value}>
             <strong>{value}</strong>
             <span>{label}</span>
-          </div>
+          </StaggerPop>
         ))}
-      </div>
+      </StaggerGroup>
     </section>
   );
 }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import styles from "./Footer.module.css";
+import { SectionSlide } from "@/components/ui/motion-primitives";
 
 const locations = [
   { city: "Jordan", detail: "Amman" },
@@ -16,15 +17,15 @@ export function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.inner}>
+      <SectionSlide className={styles.inner} from="bottom">
         <div className={styles.columns}>
           <div>
             <Link href="/" className={styles.brandLogo} aria-label="EMS home">
               <Image
                 src="/ems-main-logo.png"
                 alt="EMS — Emerging Management Services"
-                width={72}
-                height={32}
+                width={92}
+                height={40}
               />
             </Link>
             <p className={styles.description}>
@@ -77,7 +78,7 @@ export function Footer() {
             </nav>
           ) : null}
         </div>
-      </div>
+      </SectionSlide>
     </footer>
   );
 }

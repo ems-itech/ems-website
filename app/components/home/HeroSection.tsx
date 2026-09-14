@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import styles from "@/page.module.css";
+import { HeroEntrance, SectionSlide } from "@/components/ui/motion-primitives";
 import { ClientsCarousel } from "./ClientsCarousel";
 
 const assurances = [
@@ -14,7 +15,7 @@ export function HeroSection() {
   return (
     <section className={styles.hero}>
       <div className={styles.heroInner}>
-        <div className={styles.copy}>
+        <HeroEntrance className={styles.copy} from="left">
           <h1>Innovative IT Solutions for Today&apos;s <span>Businesses</span>.</h1>
           <p>EMS is your reliable IT partner, ensuring your organization runs smoothly. We design and maintain the infrastructure essential for modern enterprises.</p>
           <div className={styles.actions}>
@@ -24,23 +25,25 @@ export function HeroSection() {
               <Image src="/figma-home/arrow-right.svg" alt="" width={20} height={20} aria-hidden />
             </Link>
           </div>
-        </div>
+        </HeroEntrance>
 
         <div className={styles.assurances} aria-label="EMS service assurances">
-          {assurances.map(({ icon, label, className }) => (
-            <div className={`${styles.assurance} ${className}`} key={label}>
-              <Image src={icon} alt="" width={20} height={20} aria-hidden />
-              <span>{label}</span>
-            </div>
+          {assurances.map(({ icon, label, className }, index) => (
+            <HeroEntrance className={`${styles.assuranceEntrance} ${className}`} delay={0.18 + index * 0.1} from="right" key={label}>
+              <div className={styles.assurance}>
+                <Image src={icon} alt="" width={20} height={20} aria-hidden />
+                <span>{label}</span>
+              </div>
+            </HeroEntrance>
           ))}
         </div>
       </div>
 
       <div className={styles.clients} aria-labelledby="clients-heading">
-        <div className={styles.clientsCard}>
+        <SectionSlide className={styles.clientsCard} from="bottom">
           <h2 id="clients-heading">Expertise Throughout the Software Lifecycle</h2>
           <ClientsCarousel />
-        </div>
+        </SectionSlide>
       </div>
     </section>
   );

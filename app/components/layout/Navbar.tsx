@@ -6,11 +6,13 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
   const isHome = pathname === "/";
   const hasOverlayHeader = isHome || pathname === "/contact";
 
@@ -30,16 +32,21 @@ export function Navbar() {
             : "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
         }`}
       >
-        <div className="mx-auto flex h-[80px] w-full max-w-[1280px] items-center justify-between rounded-[16px] border border-slate-100 bg-white/50 px-5 backdrop-blur-xl md:px-8">
+        <motion.div
+          initial={reduceMotion ? false : { y: -36 }}
+          animate={{ y: 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto flex h-[80px] w-full max-w-[1280px] items-center justify-between rounded-[16px] border border-slate-100 bg-white/50 px-5 backdrop-blur-xl md:px-8"
+        >
         <div className="flex items-center gap-8">
-          <Link href="/" className="flex h-[32px] w-[73px] items-center">
+          <Link href="/" className="flex h-[40px] w-[92px] items-center">
             <Image
               src="/ems-main-logo.png"
               alt="EMS Logo"
-              width={73}
-              height={32}
+              width={92}
+              height={40}
               priority={isHome}
-              className="h-[32px] w-[73px] object-contain"
+              className="h-[40px] w-[92px] object-contain"
             />
           </Link>
 
@@ -48,7 +55,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`inline-flex h-[24px] w-fit items-center gap-2 whitespace-nowrap transition-colors hover:text-neutral-950 ${
+                className={`inline-flex h-[24px] w-fit items-center gap-2 whitespace-nowrap transition-colors duration-200 hover:text-[#88c700] ${
                   pathname === link.href ? "text-neutral-950" : ""
                 }`}
               >
@@ -90,7 +97,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`text-lg font-medium transition-colors hover:text-foreground/80 ${pathname === link.href ? "text-foreground" : "text-foreground/60"
+                  className={`text-lg font-medium transition-colors duration-200 hover:text-[#88c700] ${pathname === link.href ? "text-foreground" : "text-foreground/60"
                     }`}
                 >
                   <span className="flex items-center gap-2">
@@ -116,7 +123,7 @@ export function Navbar() {
             </nav>
           </SheetContent>
         </Sheet>
-        </div>
+        </motion.div>
       </header>
       {hasOverlayHeader ? null : <div className="h-[120px]" aria-hidden="true" />}
     </>

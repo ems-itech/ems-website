@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import styles from "./page.module.css";
+import { HeroEntrance, SectionSlide } from "@/components/ui/motion-primitives";
 
 type SubmitStatus = "success" | "error" | null;
 
@@ -76,16 +77,19 @@ export default function Contact() {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <header className={styles.intro}>
-          <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-            <Link href="/">Home</Link><span>/</span><span aria-current="page">Contact</span>
-          </nav>
-          <h1>Talk to an expert</h1>
-          <p>Tell us what you are trying to keep running, ship or hire for. The first call is with the practice lead who would own the work — not a sales team.</p>
-        </header>
+        <HeroEntrance from="left">
+          <header className={styles.intro}>
+            <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+              <Link href="/">Home</Link><span>/</span><span aria-current="page">Contact</span>
+            </nav>
+            <h1>Talk to an expert</h1>
+            <p>Tell us what you are trying to keep running, ship or hire for. The first call is with the practice lead who would own the work — not a sales team.</p>
+          </header>
+        </HeroEntrance>
 
         <div className={styles.contentGrid}>
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <SectionSlide className={styles.formMotion} from="left">
+            <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.fields}>
               <div className={styles.fieldRow}>
                 <label className={styles.field}>Full name<input name="name" required placeholder="Your name" autoComplete="name" /></label>
@@ -120,23 +124,26 @@ export default function Contact() {
                 <Image src="/figma-contact/arrow-right.svg" alt="" width={20} height={20} aria-hidden />
               </button>
             </div>
-          </form>
+            </form>
+          </SectionSlide>
 
           <aside className={styles.sidebar}>
-            <div className={styles.incidentCard}>
-              <p className={styles.incidentLabel}>PRODUCTION INCIDENT?</p>
-              <a className={styles.incidentPhone} href="tel:+962790077730">+962 79 007 7730</a>
-              <p>The 24/7 escalation line for clients under a Production Support SLA.</p>
-            </div>
+            <SectionSlide className={styles.sidebarMotion} from="right" delay={0.1}>
+              <div className={styles.incidentCard}>
+                <p className={styles.incidentLabel}>PRODUCTION INCIDENT?</p>
+                <a className={styles.incidentPhone} href="tel:+962790077730">+962 79 007 7730</a>
+                <p>The 24/7 escalation line for clients under a Production Support SLA.</p>
+              </div>
 
-            <div className={styles.detailsCard}>
-              {contactDetails.map((detail) => (
-                <div className={styles.detail} key={detail.label}>
-                  <span className={styles.iconBox}><Image src={detail.icon} alt="" width={20} height={20} aria-hidden /></span>
-                  <span className={styles.detailText}><small>{detail.label}</small><strong>{detail.content}</strong></span>
-                </div>
-              ))}
-            </div>
+              <div className={styles.detailsCard}>
+                {contactDetails.map((detail) => (
+                  <div className={styles.detail} key={detail.label}>
+                    <span className={styles.iconBox}><Image src={detail.icon} alt="" width={20} height={20} aria-hidden /></span>
+                    <span className={styles.detailText}><small>{detail.label}</small><strong>{detail.content}</strong></span>
+                  </div>
+                ))}
+              </div>
+            </SectionSlide>
           </aside>
         </div>
       </div>

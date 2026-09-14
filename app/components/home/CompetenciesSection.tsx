@@ -1,4 +1,5 @@
 import styles from "@/page.module.css";
+import { HeadingReveal, StaggerCard, StaggerGroup } from "@/components/ui/motion-primitives";
 
 const competencies = [
   ["IT Consulting", "At EMS, we provide strategic IT consulting to help organizations design scalable architectures, optimize operations, and successfully navigate digital transformation."],
@@ -16,19 +17,19 @@ export function CompetenciesSection() {
   return (
     <section id="services" className={styles.competencies}>
       <div className={styles.competenciesPanel}>
-        <div className={`${styles.sectionHeading} ${styles.sectionHeadingLight}`}>
+        <HeadingReveal className={`${styles.sectionHeading} ${styles.sectionHeadingLight}`}>
           <p className={styles.eyebrow}>TECHNICAL MASTERY</p>
           <h2>Key Competencies</h2>
           <p>Tailored services crafted for mission-critical operations. We design solutions that grow with your business.</p>
-        </div>
-        <div className={styles.competencyGrid}>
+        </HeadingReveal>
+        <StaggerGroup className={styles.competencyGrid} stagger={0.15}>
           {competencies.map(([title, description]) => (
-            <article className={styles.competencyCard} key={title}>
+            <StaggerCard className={styles.competencyCard} key={title}>
               <h3>{title}</h3>
               <p>{description}</p>
-            </article>
+            </StaggerCard>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

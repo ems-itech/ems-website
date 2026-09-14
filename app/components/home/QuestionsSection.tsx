@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import styles from "@/page.module.css";
+import { HeadingReveal, SectionSlide } from "@/components/ui/motion-primitives";
 
 const faqs = [
   ["What SLA guarantees does EMS offer?", "We offer a 99.9% uptime SLA backed by 24/7 monitoring and rapid incident response."],
@@ -14,12 +15,12 @@ const faqs = [
 export function QuestionsSection() {
   return (
     <section id="faq" className={styles.questions}>
-      <div className={styles.sectionHeading}>
+      <HeadingReveal className={styles.sectionHeading}>
         <h2>Common Questions</h2>
         <p>Everything you need to attract, engage, and retain more users.</p>
-      </div>
+      </HeadingReveal>
       <div className={styles.questionsGrid}>
-        <div className={styles.faqPanel}>
+        <SectionSlide className={styles.faqPanel} from="left">
           <h3>Frequently Asked Questions</h3>
           <div className={styles.faqList}>
             {faqs.map(([question, answer], index) => (
@@ -32,8 +33,8 @@ export function QuestionsSection() {
               </details>
             ))}
           </div>
-        </div>
-        <aside className={styles.expertCard}>
+        </SectionSlide>
+        <SectionSlide className={styles.expertCard} from="right" delay={0.12}>
           <div>
             <h3>Ready to elevate your IT infrastructure?</h3>
             <p>Connect with our enterprise experts to discuss your technical challenges and discover how EMS can drive your digital success.</p>
@@ -42,7 +43,7 @@ export function QuestionsSection() {
             Talk to an Expert Today
             <Image src="/figma-home/arrow-up-right.svg" alt="" width={20} height={20} aria-hidden />
           </Link>
-        </aside>
+        </SectionSlide>
       </div>
     </section>
   );

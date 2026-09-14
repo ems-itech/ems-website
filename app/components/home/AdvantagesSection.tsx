@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import styles from "@/page.module.css";
+import { HeadingReveal, StaggerGroup, StaggerPop } from "@/components/ui/motion-primitives";
 
 const advantages = [
   ["/figma-home/shield-tick.svg", "Enterprise-Level Security", "Unyielding security standards integrated into every solution."],
@@ -12,18 +13,18 @@ const advantages = [
 export function AdvantagesSection() {
   return (
     <section id="why-ems" className={styles.advantages}>
-      <div className={styles.sectionHeading}>
+      <HeadingReveal className={styles.sectionHeading}>
         <p className={styles.eyebrow}>WHY CHOOSE EMS</p>
         <h2>The EMS Advantage</h2>
-      </div>
-      <div className={styles.advantageGrid}>
+      </HeadingReveal>
+      <StaggerGroup className={styles.advantageGrid} stagger={0.18}>
         {advantages.map(([icon, title, description]) => (
-          <article className={styles.advantageCard} key={title}>
+          <StaggerPop className={styles.advantageCard} key={title}>
             <Image src={icon} alt="" width={40} height={40} aria-hidden />
             <div><h3>{title}</h3><p>{description}</p></div>
-          </article>
+          </StaggerPop>
         ))}
-      </div>
+      </StaggerGroup>
     </section>
   );
 }
