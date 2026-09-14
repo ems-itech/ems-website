@@ -109,8 +109,8 @@ export function StaggerGroup({
 }
 
 const cardVariants: Variants = {
-  hidden: { y: 34, scale: 0.94, clipPath: "inset(0 0 100% 0 round 14px)" },
-  visible: { y: 0, scale: 1, clipPath: "inset(0 0 0% 0 round 14px)", transition: { duration: 0.8, ease: smooth } },
+  hidden: { y: 110 },
+  visible: { y: 0, transition: { duration: 0.9, ease: smooth } },
 };
 
 export function StaggerCard({ children, className }: Omit<MotionProps, "delay">) {

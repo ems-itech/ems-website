@@ -1,10 +1,11 @@
 import styles from "@/page.module.css";
-import { HeadingReveal, StaggerGroup, StaggerPop } from "@/components/ui/motion-primitives";
+import { HeadingReveal } from "@/components/ui/motion-primitives";
+import { MetricCounter } from "./MetricCounter";
 
 const metrics = [
-  ["99.9%", "Commitment to Uptime"],
-  ["24/7", "PRODUCTION COVERAGE"],
-  ["15+", "ENTERPRISE CLIENTS"],
+  { target: 99.9, suffix: "%", decimals: 1, label: "Commitment to Uptime" },
+  { target: 24, suffix: "/7", decimals: 0, label: "PRODUCTION COVERAGE" },
+  { target: 15, suffix: "+", decimals: 0, label: "ENTERPRISE CLIENTS" },
 ] as const;
 
 export function MetricsSection() {
@@ -14,14 +15,19 @@ export function MetricsSection() {
         <h2>Unlock the full potential of your data</h2>
         <p>Everything you need to attract, engage, and retain more users.</p>
       </HeadingReveal>
-      <StaggerGroup className={styles.metricGrid} stagger={0.22}>
-        {metrics.map(([value, label]) => (
-          <StaggerPop className={styles.metric} key={value}>
-            <strong>{value}</strong>
+      <div className={styles.metricGrid}>
+        {metrics.map(({ target, suffix, decimals, label }, index) => (
+          <div className={styles.metric} key={label}>
+            <MetricCounter
+              target={target}
+              suffix={suffix}
+              decimals={decimals}
+              delay={index * 0.22}
+            />
             <span>{label}</span>
-          </StaggerPop>
+          </div>
         ))}
-      </StaggerGroup>
+      </div>
     </section>
   );
 }
