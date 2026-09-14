@@ -94,27 +94,6 @@
   text-align: center;
 }
 
-.contactDivider {
-  margin-inline: 32px;
-}
-
-.contactBottom {
-  justify-content: space-between;
-  padding-inline: 32px;
-}
-
-.contactBottom .copyright {
-  text-align: left;
-}
-
-.legalLinks {
-  display: flex;
-  gap: 16px;
-  color: #737373;
-  font-size: 16px;
-  line-height: 24px;
-}
-
 @media (max-width: 1328px) {
   .inner {
     padding-inline: 24px;
@@ -159,19 +138,4 @@
     margin-top: 26px;
   }
 
-  .contactDivider {
-    margin-inline: 0;
-  }
-
-  .contactBottom {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 18px;
-    padding-inline: 0;
-  }
-
-  .legalLinks {
-    flex-wrap: wrap;
-    font-size: 14px;
-  }
 }

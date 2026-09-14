@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 import styles from "./Footer.module.css";
 import { SectionSlide } from "@/components/ui/motion-primitives";
@@ -13,8 +10,6 @@ const locations = [
 ];
 
 export function Footer() {
-  const isContact = usePathname() === "/contact";
-
   return (
     <footer className={styles.footer}>
       <SectionSlide className={styles.inner} from="bottom">
@@ -65,18 +60,11 @@ export function Footer() {
           </div>
         </div>
 
-        <hr className={`${styles.divider} ${isContact ? styles.contactDivider : ""}`} />
-        <div className={`${styles.bottom} ${isContact ? styles.contactBottom : ""}`}>
+        <hr className={styles.divider} />
+        <div className={styles.bottom}>
           <p className={styles.copyright}>
             © 2026 Ems-itech. All rights reserved.
           </p>
-          {isContact ? (
-            <nav className={styles.legalLinks} aria-label="Legal">
-              <Link href="/terms">Terms of Service</Link>
-              <Link href="/privacy">Privacy Policy</Link>
-              <Link href="/cookies">Cookie Policy</Link>
-            </nav>
-          ) : null}
         </div>
       </SectionSlide>
     </footer>
