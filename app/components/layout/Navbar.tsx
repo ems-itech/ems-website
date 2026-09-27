@@ -82,8 +82,8 @@ export function Navbar() {
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" aria-label="Open navigation menu">
-                <Menu className="h-5 w-5" />
+              <Button variant="ghost" size="icon" className="h-12 w-12 [&_svg]:!size-9" aria-label="Open navigation menu">
+                <Menu className="size-9" strokeWidth={2.5} />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
