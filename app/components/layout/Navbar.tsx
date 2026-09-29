@@ -26,7 +26,7 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 z-50 flex h-[120px] w-full items-end px-4 md:px-6 ${hasOverlayHeader
+        className={`fixed top-0 z-50 flex h-[80px] w-full items-center px-4 md:px-6 ${hasOverlayHeader
           ? ""
           : "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
           }`}
@@ -124,7 +124,7 @@ export function Navbar() {
           </Sheet>
         </motion.div>
       </header>
-      {hasOverlayHeader ? null : <div className="h-[120px]" aria-hidden="true" />}
+      {hasOverlayHeader ? null : <div className="h-[80px]" aria-hidden="true" />}
     </>
   );
 }

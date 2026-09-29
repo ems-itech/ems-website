@@ -61,8 +61,8 @@ export function HeadingReveal({ children, className, delay = 0 }: MotionProps) {
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? false : { clipPath: "inset(0 0 100% 0)", y: 24 }}
-      whileInView={{ clipPath: "inset(0 0 0% 0)", y: 0 }}
+      initial={reduceMotion ? false : { y: 24 }}
+      whileInView={{ y: 0 }}
       viewport={viewport}
       transition={{ duration: reduceMotion ? 0 : 1, delay: reduceMotion ? 0 : delay, ease: smooth }}
     >
@@ -77,8 +77,8 @@ export function ClipReveal({ children, className, delay = 0 }: MotionProps) {
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? false : { clipPath: "inset(0 100% 0 0 round 24px)" }}
-      whileInView={{ clipPath: "inset(0 0% 0 0 round 24px)" }}
+      initial={reduceMotion ? false : { y: 36, scale: 0.98 }}
+      whileInView={{ y: 0, scale: 1 }}
       viewport={viewport}
       transition={{ duration: reduceMotion ? 0 : 1.25, delay: reduceMotion ? 0 : delay, ease: smooth }}
     >

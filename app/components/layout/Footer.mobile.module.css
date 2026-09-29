@@ -22,12 +22,12 @@
   }
 
   .mobileLogo img {
-    width: 92px;
+    width: 104px;
     height: auto;
   }
 
   .mobileDescription {
-    margin: 52px 0 60px;
+    margin: 28px 0 36px;
     color: #5c5c5c;
     font-size: 1rem;
     line-height: 1.5;
@@ -43,7 +43,7 @@
 
   .accordion summary {
     display: flex;
-    min-height: 108px;
+    min-height: 72px;
     cursor: pointer;
     align-items: center;
     justify-content: space-between;

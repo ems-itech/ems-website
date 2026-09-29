@@ -132,7 +132,7 @@
 .clientWide img { object-fit: contain; }
 @keyframes clients-marquee { to { transform: translateX(calc(-50% - 10px)); } }
 
-.competencies { min-height: 1176px; padding: 96px 40px; background: #fff; }
+.competencies { min-height: auto; padding: 48px 40px; background: #fff; }
 .competencies,
 .advantages,
 .questions { scroll-margin-top: 120px; }
@@ -153,20 +153,20 @@
 .competencyCard h3 { margin: 0; font-size: 24px; font-weight: 500; line-height: 32px; }
 .competencyCard p { margin: 12px 0 0; color: #525252; font-size: 16px; line-height: 24px; }
 
-.advantages { min-height: 542px; padding: 96px 40px; }
+.advantages { min-height: auto; padding: 48px 40px; }
 .advantageGrid { display: grid; width: min(100%, 1280px); min-height: 222px; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin: 48px auto 0; }
 .advantageCard { display: flex; flex-direction: column; gap: 16px; border-radius: 12px; padding: 24px; background: var(--brand-50); }
 .advantageCard h3 { margin: 0; font-size: 20px; font-weight: 500; line-height: 30px; }
 .advantageCard p { margin: 16px 0 0; color: #525252; font-size: 16px; line-height: 24px; }
 
-.metrics { min-height: 462px; padding: 96px 40px; }
+.metrics { min-height: auto; padding: 48px 40px; }
 .metricGrid { display: grid; width: min(100%, 768px); grid-template-columns: repeat(3, 1fr); margin: 64px auto 0; }
 .metric { display: flex; min-height: 112px; flex-direction: column; gap: 12px; align-items: center; text-align: center; }
 .metric + .metric { border-left: 1px solid #e5e5e5; }
 .metric strong { color: var(--brand-600); font-size: 60px; font-weight: 600; letter-spacing: -1.2px; line-height: 72px; }
 .metric span { font-size: 18px; font-weight: 500; line-height: 28px; }
 
-.questions { padding: 96px 40px; }
+.questions { padding: 48px 40px; }
 .questionsGrid { display: grid; width: min(100%, 1280px); grid-template-columns: 7fr 5fr; gap: 24px; margin: 64px auto 0; }
 .faqPanel { border-radius: 20px; padding: 24px; background: #f1f5f9; }
 .faqPanel > h3 { height: 58px; margin: 0; padding: 12px 20px 8px; font-size: 30px; font-weight: 600; line-height: 38px; }
@@ -183,7 +183,7 @@
 .expertCard p { margin: 16px 0 0; color: var(--brand-900); font-size: 20px; line-height: 30px; }
 .expertCard .primaryButton { align-self: flex-start; }
 
-.cta { min-height: 338px; padding: 0 40px 96px; }
+.cta { min-height: 338px; padding: 48px 40px; }
 .ctaInner { position: relative; display: flex; width: min(100%, 1280px); min-height: 242px; align-items: flex-start; justify-content: space-between; gap: 48px; margin-inline: auto; overflow: hidden; border: 1px solid var(--brand-300); border-radius: 24px; padding: 64px; background: url("/figma-home/cta-bg.png") center / cover no-repeat; }
 .ctaInner::before { position: absolute; z-index: 0; inset: 0; content: ""; background: var(--brand-400); mix-blend-mode: plus-lighter; }
 .ctaInner > * { position: relative; z-index: 1; }
@@ -205,7 +205,7 @@
   .competencyCard p { font-size: 16px; line-height: 24px; }
   .advantageGrid { grid-template-columns: repeat(2, 1fr); }
   .advantages,
-  .questions { min-height: auto; padding-block: 80px; }
+  .questions { min-height: auto; padding-block: 48px; }
   .questionsGrid { grid-template-columns: 1fr; }
   .expertCard { min-height: 420px; }
 }
@@ -231,7 +231,7 @@
   .advantages,
   .metrics,
   .questions,
-  .cta { min-height: auto; padding: 64px 18px; }
+  .cta { min-height: auto; padding: 48px 18px; }
   .competenciesPanel { min-height: 0; gap: 42px; padding: 48px 18px 24px; }
   .competencyGrid { grid-template-columns: 1fr; gap: 18px; }
   .sectionHeading h2 { font-size: 30px; line-height: 38px; }
@@ -248,7 +248,6 @@
   .expertCard { min-height: 400px; padding: 32px 24px; }
   .expertCard h3 { font-size: 30px; line-height: 38px; }
   .expertCard p { font-size: 17px; line-height: 27px; }
-  .cta { padding-top: 0; }
   .ctaInner { flex-direction: column; padding: 36px 24px; }
   .cta h2 { font-size: 26px; line-height: 34px; }
   .cta p { font-size: 17px; line-height: 27px; }
