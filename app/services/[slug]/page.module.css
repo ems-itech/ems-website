@@ -1,0 +1,114 @@
+.page {
+  --brand-50: #fbffe5;
+  --brand-100: #f2ffc7;
+  --brand-300: #d1fe58;
+  --brand-600: #88c700;
+  --brand-700: #5a8506;
+  --brand-900: #3d580f;
+  --brand-950: #1f3201;
+  overflow: hidden;
+  color: #171717;
+  background: #fff;
+}
+
+.container { width: min(calc(100% - 80px), 1280px); margin-inline: auto; }
+.introSection { padding-top: 32px; }
+.hero { position: relative; min-height: 573px; overflow: hidden; border-radius: 20px; background: var(--brand-50); }
+.heroImage { position: absolute; inset: 0; background: url("/figma-service/hero.png") center / cover no-repeat; }
+.heroTint { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(251,255,229,.98) 0%, rgba(251,255,229,.93) 40%, rgba(156,220,6,.1) 70%, rgba(156,220,6,.34) 100%); }
+.heroContent { position: relative; z-index: 1; display: flex; width: min(66%, 845px); min-height: 573px; flex-direction: column; justify-content: flex-end; padding: 60px; }
+.eyebrow { margin: 0; color: var(--brand-700); font-size: 16px; font-weight: 600; line-height: 24px; text-transform: uppercase; }
+.hero h1 { max-width: 640px; margin: 20px 0 0; font-size: 60px; font-weight: 600; letter-spacing: -1.2px; line-height: 1.08; }
+.lead { max-width: 640px; margin: 20px 0 0; color: #525252; font-size: 20px; line-height: 30px; }
+.actions { display: flex; gap: 12px; margin-top: 40px; }
+.primaryButton, .secondaryButton { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 8px; border: 1px solid; border-radius: 8px; padding: 11px 20px; font-size: 16px; font-weight: 600; line-height: 24px; box-shadow: 0 1px 2px rgb(0 0 0 / 5%); transition: transform 160ms ease, background-color 160ms ease; }
+.primaryButton { border-color: var(--brand-600); color: #fff; background: var(--brand-600); }
+.secondaryButton { border-color: #d4d4d4; color: #404040; background: #fff; }
+.primaryButton:hover, .secondaryButton:hover { transform: translateY(-2px); }
+.metricGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 40px; }
+.metric { display: flex; min-width: 0; flex-direction: column; gap: 12px; border-radius: 12px; padding: 32px; background: var(--brand-50); }
+.metric strong { color: var(--brand-600); font-size: 48px; font-weight: 600; letter-spacing: -0.96px; line-height: 56px; white-space: nowrap; }
+.metric span { font-size: 14px; font-weight: 500; letter-spacing: .4px; line-height: 20px; }
+.section { padding-top: 96px; }
+.sectionHeading { width: min(100%, 768px); }
+.sectionHeading h2 { margin: 12px 0 0; font-size: 36px; font-weight: 600; letter-spacing: -.72px; line-height: 44px; }
+.sectionHeading > p:last-child { margin: 12px 0 0; color: #525252; font-size: 20px; line-height: 30px; }
+.featureGrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; margin-top: 40px; }
+.featureCard { display: flex; min-height: 315px; flex-direction: column; gap: 24px; justify-content: flex-start; grid-column: span 2; border: 1px solid var(--brand-300); border-radius: 16px; padding: 24px; background: #fff; }
+.featureCard:nth-last-child(2):nth-child(even) { grid-column: span 3; }
+.featureCard:last-child:nth-child(odd) { grid-column: span 3; }
+.iconBubble { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 50%; background: var(--brand-100); }
+.featureCard h3 { margin: 0; font-size: 26px; font-weight: 600; line-height: 34px; }
+.featureCard p { margin: 12px 0 0; color: #525252; font-size: 17px; line-height: 27px; }
+.bulletList { display: grid; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none; }
+.bulletList li { display: flex; align-items: flex-start; gap: 8px; color: #525252; font-size: 14px; line-height: 20px; }
+.bulletList img { flex: 0 0 18px; margin-top: 1px; }
+.commitmentPanel { display: grid; gap: 12px; margin-top: 40px; border-radius: 16px; padding: 24px; background: #f1f5f9; }
+.commitment { display: flex; min-height: 84px; align-items: center; justify-content: space-between; gap: 32px; border-radius: 10px; padding: 20px 24px; background: #fff; }
+.commitment h3 { margin: 0; font-size: 17px; font-weight: 600; line-height: 24px; }
+.commitment p { margin: 6px 0 0; color: #525252; font-size: 14px; line-height: 20px; }
+.commitment strong { flex: 0 0 auto; color: var(--brand-700); font-size: 14px; line-height: 20px; text-align: right; }
+.stepGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 48px; margin: 52px 0 0; padding: 0; list-style: none; }
+.stepGrid span { color: var(--brand-600); font-size: 22px; font-weight: 600; }
+.stepGrid h3 { margin: 32px 0 0; font-size: 18px; font-weight: 600; line-height: 26px; }
+.stepGrid p { margin: 8px 0 0; color: #525252; font-size: 15px; line-height: 23px; }
+.faqSection { padding-bottom: 96px; }
+.faqGrid { display: grid; grid-template-columns: 7fr 5fr; gap: 24px; }
+.faqPanel { border-radius: 16px; padding: 24px; background: #f1f5f9; }
+.faqPanel > h2, .contactCard h2 { margin: 0; font-size: 30px; font-weight: 600; line-height: 38px; }
+.faqPanel > h2 { padding: 8px 12px 20px; }
+.faqList { display: grid; gap: 12px; }
+.faqList details { border-radius: 10px; padding: 20px; background: #fff; }
+.faqList details[open] { background: var(--brand-100); }
+.faqList summary { display: flex; cursor: pointer; align-items: flex-start; justify-content: space-between; gap: 20px; font-size: 16px; font-weight: 600; line-height: 24px; list-style: none; }
+.faqList summary::-webkit-details-marker { display: none; }
+.faqList summary img { flex: 0 0 20px; transition: transform 160ms ease; }
+.faqList details[open] summary img { transform: rotate(45deg); }
+.faqList details p { margin: 8px 0 0; color: #525252; font-size: 14px; line-height: 22px; }
+.contactCard { position: relative; display: flex; min-width: 0; flex-direction: column; justify-content: space-between; overflow: hidden; border-radius: 16px; padding: 48px; background: var(--brand-50) url("/figma-service/faq-bg.png") center / cover no-repeat; }
+.contactCard h2 { color: var(--brand-950); }
+.contactCard p { margin: 16px 0 0; color: var(--brand-900); font-size: 18px; line-height: 28px; }
+.contactCard .primaryButton { align-self: flex-start; }
+
+@media (max-width: 1000px) {
+  .heroContent { width: 76%; }
+  .hero h1 { font-size: 48px; }
+  .metricGrid { grid-template-columns: repeat(2, 1fr); }
+  .featureCard, .featureCard:nth-last-child(2):nth-child(even), .featureCard:last-child:nth-child(odd) { grid-column: span 3; }
+  .stepGrid { grid-template-columns: repeat(2, 1fr); }
+  .faqGrid { grid-template-columns: 1fr; }
+  .contactCard { min-height: 380px; }
+}
+
+@media (max-width: 700px) {
+  .container { width: calc(100% - 36px); }
+  .introSection { padding-top: 18px; }
+  .hero { min-height: 630px; }
+  .heroImage { background-position: 62% center; opacity: .5; }
+  .heroTint { background: linear-gradient(0deg, rgba(251,255,229,.98) 25%, rgba(251,255,229,.65) 100%); }
+  .heroContent { width: 100%; min-height: 630px; padding: 32px 24px; }
+  .hero h1 { font-size: 40px; line-height: 1.08; }
+  .lead { font-size: 17px; line-height: 27px; }
+  .actions { display: grid; }
+  .primaryButton, .secondaryButton { width: 100%; }
+  .metricGrid { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+  .metric { padding: 24px; }
+  .metric strong { font-size: 42px; line-height: 50px; }
+  .section { padding-top: 64px; }
+  .sectionHeading h2 { font-size: 30px; line-height: 38px; }
+  .sectionHeading > p:last-child { font-size: 17px; line-height: 27px; }
+  .featureGrid { grid-template-columns: 1fr; gap: 16px; }
+  .featureCard, .featureCard:nth-last-child(2):nth-child(even), .featureCard:last-child:nth-child(odd) { min-height: 280px; grid-column: auto; }
+  .commitment { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .commitment strong { text-align: left; }
+  .stepGrid { grid-template-columns: 1fr; gap: 36px; }
+  .stepGrid h3 { margin-top: 18px; }
+  .faqSection { padding-bottom: 64px; }
+  .faqPanel { padding: 16px; }
+  .faqPanel > h2, .contactCard h2 { font-size: 25px; line-height: 33px; }
+  .contactCard { min-height: 390px; padding: 32px 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton, .secondaryButton, .faqList summary img { transition: none; }
+}

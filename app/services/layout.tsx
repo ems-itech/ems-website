@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { createPageMetadata } from "@/lib/seo";
+import "./service-details.css";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Enterprise IT Services",

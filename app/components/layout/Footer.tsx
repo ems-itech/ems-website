@@ -7,7 +7,6 @@ import { SectionSlide } from "@/components/ui/motion-primitives";
 const locations = [
   { city: "Amman", detail: "Jordan" },
   { city: "Riyadh", detail: "Saudi Arabia" },
-  { city: "Cairo", detail: "Egypt" },
 ];
 
 const companyLinks = [

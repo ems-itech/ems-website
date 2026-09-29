@@ -1,0 +1,47 @@
+aside[class*="contactCard"] {
+  background-blend-mode: screen;
+}
+
+/* The first three scope cards use circular leading icons. The final two
+   wide cards use their dedicated icons as top-right actions, per Figma. */
+div[class*="featureCard"]:nth-child(n + 4) {
+  position: relative;
+  justify-content: flex-start;
+}
+
+div[class*="featureCard"]:nth-child(n + 4) > div:first-child {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border-radius: 12px;
+  background: #fbffe5;
+}
+
+div[class*="featureCard"]:nth-child(n + 4) h3 {
+  margin-top: 6px;
+  padding-right: 64px;
+}
+
+div[class*="featureCard"]:nth-child(n + 4) ul {
+  margin-top: 32px;
+}
+
+/* Every checklist icon uses the filled circular treatment from Figma. */
+ul[class*="bulletList"] img {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  box-sizing: border-box;
+  margin-top: -5px;
+  border-radius: 50%;
+  padding: 7px;
+  background: #f2ffc7;
+  object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  div[class*="featureCard"]:nth-child(n + 4) > div:first-child {
+    top: 20px;
+    right: 20px;
+  }
+}
