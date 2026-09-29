@@ -11,13 +11,6 @@ const locations = [
   { city: "Riyadh", detail: "Saudi Arabia" },
 ];
 
-const companyLinks = [
-  { href: "/about", label: "About EMS" },
-  { href: "/services", label: "Services" },
-  { href: "/clients", label: "Clients" },
-  { href: "/contact", label: "Contact" },
-] as const;
-
 export function Footer() {
   return (
     <footer className={styles.footer}>
@@ -26,19 +19,6 @@ export function Footer() {
           <div>
             <FooterLogo />
             <FooterDescription />
-          </div>
-
-          <div>
-            <h2 className={styles.heading}>Company</h2>
-            <ul className={styles.companyList}>
-              {companyLinks.map((link) => (
-                <li key={link.href}>
-                  <Link className={styles.secondaryText} href={link.href}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div>

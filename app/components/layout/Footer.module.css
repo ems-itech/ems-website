@@ -11,7 +11,7 @@
 
 .columns {
   display: grid;
-  grid-template-columns: 1.35fr repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1.35fr repeat(2, minmax(0, 1fr));
   gap: 64px;
   align-items: start;
 }
@@ -42,7 +42,6 @@
 }
 
 .presenceList,
-.companyList,
 .contactList {
   display: grid;
   gap: 12px;
@@ -59,18 +58,8 @@
 }
 
 .presenceList,
-.companyList,
 .contactList {
   gap: 14px;
-}
-
-.companyList a {
-  text-decoration: none;
-  transition: color 160ms ease;
-}
-
-.companyList a:hover {
-  color: #628922;
 }
 
 .presenceItem,
