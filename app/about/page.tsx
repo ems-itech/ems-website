@@ -1,12 +1,12 @@
 "use client";
 
-import { FadeIn } from "@/components/ui/fade-in";
+import { HeroEntrance, StaggerGroup, StaggerPop } from "@/components/ui/motion-primitives";
 
 export default function About() {
     return (
         <div className="pt-24 pb-32">
             <div className="container mx-auto px-4">
-                <FadeIn>
+                <HeroEntrance from="left">
                     <div className="max-w-3xl mb-20">
                         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
                             About Emerging Management Services (EMS)
@@ -15,10 +15,10 @@ export default function About() {
                             EMS was founded on a singular principle: complex technology requires disciplined execution. We act as the technical backbone for organizations that cannot afford failure.
                         </p>
                     </div>
-                </FadeIn>
+                </HeroEntrance>
 
-                <div className="grid md:grid-cols-3 gap-12 mt-16">
-                    <FadeIn delay={0.1}>
+                <StaggerGroup className="grid md:grid-cols-3 gap-12 mt-16" stagger={0.22}>
+                    <StaggerPop>
                         <div className="border-l-2 border-primary pl-6">
                             <h2 className="text-xl font-bold mb-4">Our Story</h2>
                             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -26,9 +26,9 @@ export default function About() {
                                 <br />
                                 Today, we are continuing to expand our services beyond these areas, evolving into broader IT solutions to meet the growing and changing needs of our clients and the technology landscape.              </p>
                         </div>
-                    </FadeIn>
+                    </StaggerPop>
 
-                    <FadeIn delay={0.2}>
+                    <StaggerPop>
                         <div className="border-l-2 border-border pl-6">
                             <h2 className="text-xl font-bold mb-4">Who we are</h2>
                             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -36,9 +36,9 @@ export default function About() {
                                 <br />
                                 Our team brings deep expertise in software engineering and IT services, enabling us to support organizations at every stage of their digital transformation journey. Through a strong focus on quality, reliability, and long-term partnerships, we help clients build scalable and efficient technology solutions that drive real business value.                            </p>
                         </div>
-                    </FadeIn>
+                    </StaggerPop>
 
-                    <FadeIn delay={0.3}>
+                    <StaggerPop>
                         <div className="border-l-2 border-border pl-6">
                             <h2 className="text-xl font-bold mb-4">Our Values</h2>
                             <ul className="text-muted-foreground text-sm leading-relaxed space-y-2">
@@ -53,8 +53,8 @@ export default function About() {
                                 </li>
                             </ul>
                         </div>
-                    </FadeIn>
-                </div>
+                    </StaggerPop>
+                </StaggerGroup>
             </div>
         </div>
     );

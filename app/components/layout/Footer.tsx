@@ -1,89 +1,147 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 
-import { Facebook, Linkedin } from "lucide-react";
+import styles from "./Footer.module.css";
+import mobileStyles from "./Footer.mobile.module.css";
+import { SectionSlide } from "@/components/ui/motion-primitives";
+
+const locations = [
+  { city: "Amman", detail: "Jordan" },
+  { city: "Riyadh", detail: "Saudi Arabia" },
+];
+
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-muted/20">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-1">
-            <Link href="/" className="inline-block mb-4">
-              <Image
-                src="/ems-main-logo.png"
-                alt="EMS Logo"
-                width={80}
-                height={80}
-                className="object-contain"
-              />
-            </Link>
-            <p className="text-sm text-muted-foreground max-w-xs">
-              EMS is a trusted IT partner providing software engineering production support and enterprise technology solutions. We focus on reliability, quality, and long-term client success.
-            </p>
+    <footer className={styles.footer}>
+      <SectionSlide className={styles.inner} from="bottom">
+        <div className={`${styles.columns} ${mobileStyles.desktopOnly}`}>
+          <div>
+            <FooterLogo />
+            <FooterDescription />
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4 text-sm">Services</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="/services">IT Consulting</Link></li>
-              <li><Link href="/services">Software Development</Link></li>
-              <li><Link href="/services">Production Support</Link></li>
-              <li><Link href="/services">Software Testing</Link></li>
+            <h2 className={styles.heading}>Regional Presence</h2>
+            <LocationList />
+          </div>
+
+          <div>
+            <h2 className={styles.heading}>Get in Touch</h2>
+            <ContactList />
+          </div>
+        </div>
+
+        <div className={mobileStyles.mobileContent}>
+          <Link href="/" className={mobileStyles.mobileLogo} aria-label="EMS home">
+            <Image
+              src="/ems-main-logo.png"
+              alt="EMS — Emerging Management Services"
+              width={92}
+              height={40}
+            />
+          </Link>
+          <p className={mobileStyles.mobileDescription}>
+            Empowering enterprise excellence through precise IT solutions and strategic
+            tech integration across the MENA region.
+          </p>
+
+          <details className={mobileStyles.accordion}>
+            <summary>
+              Regional Presence
+              <ChevronDown className={mobileStyles.chevron} size={24} strokeWidth={3} aria-hidden="true" />
+            </summary>
+            <ul className={mobileStyles.accordionList}>
+              {locations.map((location) => (
+                <li className={mobileStyles.accordionItem} key={location.city}>
+                  <span className={mobileStyles.primaryText}>{location.city}</span>
+                  <span className={mobileStyles.secondaryText}>{location.detail}</span>
+                </li>
+              ))}
             </ul>
-          </div>
+          </details>
 
-          <div>
-            <h3 className="font-semibold mb-4 text-sm">Company</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/contact">Contact Us</Link></li>
-              <li><Link href="/clients">Clients</Link></li>
-              <li><Link href="/services">Services</Link></li>
-
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4 text-sm">Contact</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>info@ems-itech.com</li>
-              <li>+962790077730</li>
-              <li>📍 Amman, Jordan</li>
-
-              {/* Social Links */}
-              <li className="pt-2 flex gap-4">
-                <a
-                  href="https://www.facebook.com/share/1B2HWzbhYc/?mibextid=wwXIfr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-[#88c700] transition"
-                >
-                  <Facebook className="h-4 w-4" />
-                  Facebook
+          <details className={mobileStyles.accordion}>
+            <summary>
+              Get in Touch
+              <ChevronDown className={mobileStyles.chevron} size={24} strokeWidth={3} aria-hidden="true" />
+            </summary>
+            <ul className={mobileStyles.accordionList}>
+              <li className={mobileStyles.accordionItem}>
+                <span className={mobileStyles.primaryText}>Contact Number</span>
+                <a className={mobileStyles.secondaryText} href="tel:+962790077730">
+                  +962790077730
                 </a>
-
-                <a
-                  href="https://www.linkedin.com/company/emerging-management-servises/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-[#88c700] transition"
-                >
-                  <Linkedin className="h-4 w-4" />
-                  LinkedIn
+              </li>
+              <li className={mobileStyles.accordionItem}>
+                <span className={mobileStyles.primaryText}>Email Address</span>
+                <a className={mobileStyles.secondaryText} href="mailto:info@ems-itech.com">
+                  info@ems-itech.com
                 </a>
               </li>
             </ul>
-          </div>
+          </details>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border/40 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Emerging Management Services. All rights reserved.</p>
-          <div className="flex gap-4">
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
-          </div>
+        <hr className={`${styles.divider} ${mobileStyles.desktopOnly}`} />
+        <div className={styles.bottom}>
+          <p className={styles.copyright}><span className={mobileStyles.desktopCopyright}>© 2026 EMS. All rights reserved.</span><span className={mobileStyles.mobileCopyright}>© 2026 Ems-itech. All rights reserved.</span></p>
         </div>
-      </div>
+      </SectionSlide>
     </footer>
+  );
+}
+
+function FooterLogo() {
+  return (
+    <Link href="/" className={styles.brandLogo} aria-label="EMS home">
+      <Image
+        src="/ems-main-logo.png"
+        alt="EMS — Emerging Management Services"
+        width={92}
+        height={40}
+      />
+    </Link>
+  );
+}
+
+function FooterDescription() {
+  return (
+    <p className={styles.description}>
+      Empowering enterprise excellence through precise IT solutions and strategic
+      tech integration across the MENA region.
+    </p>
+  );
+}
+
+function LocationList() {
+  return (
+    <ul className={styles.presenceList}>
+      {locations.map((location) => (
+        <li className={styles.presenceItem} key={location.city}>
+          <span className={styles.primaryText}>{location.city}</span>
+          <span className={styles.secondaryText}>{location.detail}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function ContactList() {
+  return (
+    <ul className={styles.contactList}>
+      <li className={styles.contactItem}>
+        <span className={styles.primaryText}>Contact Number</span>
+        <a className={styles.secondaryText} href="tel:+962790077730">
+          +962790077730
+        </a>
+      </li>
+      <li className={styles.contactItem}>
+        <span className={styles.primaryText}>Email Address</span>
+        <a className={styles.secondaryText} href="mailto:info@ems-itech.com">
+          info@ems-itech.com
+        </a>
+      </li>
+    </ul>
   );
 }
